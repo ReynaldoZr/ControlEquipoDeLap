@@ -1,0 +1,7 @@
+target/
+.idea/
+.run/
+.env
+.env.*
+*.iml
+*.local.properties

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.controlequipolap.controller.HelloController"
+      prefWidth="900.0" prefHeight="640.0" spacing="12.0">
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
+    <children>
+        <Label text="Control de equipos de laboratorio"/>
+
+        <!-- Formulario para registrar o editar un equipo -->
+        <GridPane hgap="10.0" vgap="8.0">
+            <children>
+                <Label text="Codigo:" GridPane.rowIndex="0"/>
+                <TextField fx:id="txtCodigo" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label text="Nombre:" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="Marca:" GridPane.rowIndex="2"/>
+                <TextField fx:id="txtMarca" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label text="Cantidad:" GridPane.rowIndex="3"/>
+                <TextField fx:id="txtCantidad" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <Label text="Tipo de equipo:" GridPane.rowIndex="4"/>
+                <ComboBox fx:id="cmbTipoEquipo" editable="false" prefWidth="220.0"
+                          GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <Label text="Estado:" GridPane.rowIndex="5"/>
+                <ComboBox fx:id="cmbEstado" editable="false" prefWidth="220.0"
+                          GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+            </children>
+        </GridPane>
+
+        <HBox spacing="10.0">
+            <children>
+                <Button fx:id="btnGuardar" text="Guardar" onAction="#guardarEquipo"/>
+                <Button fx:id="btnActualizar" text="Actualizar" onAction="#actualizarEquipo"/>
+                <Button fx:id="btnEliminar" text="Eliminar" onAction="#eliminarEquipo"/>
+                <Button fx:id="btnLimpiar" text="Limpiar" onAction="#limpiarCampos"/>
+            </children>
+        </HBox>
+
+        <Separator/>
+
+        <!-- Estos controles son independientes de los del formulario -->
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <children>
+                <Label text="Nombre:"/>
+                <TextField fx:id="txtBuscar" prefWidth="180.0" promptText="Buscar por nombre"/>
+                <Label text="Tipo:"/>
+                <ComboBox fx:id="cmbFiltroTipo" editable="false" prefWidth="160.0" promptText="Todos los tipos"/>
+                <Button fx:id="btnBuscar" text="Buscar" onAction="#buscarEquipos"/>
+                <Button fx:id="btnLimpiarFiltros" text="Limpiar filtros" onAction="#limpiarFiltros"/>
+            </children>
+        </HBox>
+
+        <TableView fx:id="tablaEquipos" editable="false" prefHeight="280.0" VBox.vgrow="ALWAYS">
+            <placeholder>
+                <Label text="Sin equipos para mostrar"/>
+            </placeholder>
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="55.0" editable="false"/>
+                <TableColumn fx:id="colCodigo" text="Codigo" prefWidth="90.0"/>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="190.0"/>
+                <TableColumn fx:id="colMarca" text="Marca" prefWidth="110.0"/>
+                <TableColumn fx:id="colEstado" text="Estado" prefWidth="170.0"/>
+                <TableColumn fx:id="colCantidad" text="Cantidad" prefWidth="80.0"/>
+                <TableColumn fx:id="colTipo" text="Tipo de equipo" prefWidth="140.0"/>
+            </columns>
+        </TableView>
+    </children>
+</VBox>
